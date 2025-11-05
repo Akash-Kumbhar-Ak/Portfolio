@@ -1,0 +1,44 @@
+.about {
+  background: #f8f9fa;
+  position: relative;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #667eea, transparent);
+}
+
+.about-text {
+  max-width: 800px;
+  margin: 60px auto 0;
+  text-align: center;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .about-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-text {
+    margin-top: 40px;
+  }
+  
+  .about-text p {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+}
