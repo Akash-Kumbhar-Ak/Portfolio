@@ -23,19 +23,26 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/contact', {
+      // Use Formspree for reliable email delivery
+      const response = await fetch('https://formspree.io/f/xpwzgqpb', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `New Contact from ${formData.name} - Portfolio`
+        }),
       });
       
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
-        throw new Error('API failed');
+        throw new Error('Formspree failed');
       }
     } catch (error) {
       // Fallback: Open email client
