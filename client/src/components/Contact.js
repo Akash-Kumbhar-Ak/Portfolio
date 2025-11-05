@@ -35,10 +35,17 @@ const Contact = () => {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
-        setStatus('error');
+        throw new Error('API failed');
       }
     } catch (error) {
-      setStatus('error');
+      // Fallback: Open email client
+      const subject = `Contact from ${formData.name}`;
+      const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+      const mailtoLink = `mailto:akashkumbhar3112@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.open(mailtoLink);
+      
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
     }
     
     setIsSubmitting(false);
