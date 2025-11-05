@@ -24,7 +24,7 @@ const Contact = () => {
     
     try {
       // Use Formspree for reliable email delivery
-      const response = await fetch('https://formspree.io/f/xpwzgqpb', {
+      const response = await fetch('https://formspree.io/f/xpwovplj', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
