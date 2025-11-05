@@ -1,29 +1,11 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Personal Portfolio MERN Stack",
-  "main": "server.js",
-  "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon server.js",
-    "client": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build",
-    "render-build": "npm install && cd client && npm install && npm run build"
-  },
+  "description": "Personal Portfolio",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
     "nodemailer": "^6.9.4"
   },
-  "devDependencies": {
-    "concurrently": "^8.2.0",
-    "nodemon": "^3.0.1"
-  },
   "engines": {
-    "node": "18.x",
-    "npm": "9.x"
+    "node": "18.x"
   }
 }
