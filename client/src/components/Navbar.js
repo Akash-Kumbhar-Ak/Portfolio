@@ -4,6 +4,7 @@ import './Navbar.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,14 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMobile = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const closeMobile = () => {
+    setMobileOpen(false);
+  };
 
   return (
     <motion.nav 
@@ -27,15 +36,15 @@ const Navbar = () => {
         >
           Akash Kumbhar
         </motion.div>
-        <ul className="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul className={`nav-menu ${mobileOpen ? 'active' : ''}`}>
+          <li><a href="#home" onClick={closeMobile}>Home</a></li>
+          <li><a href="#about" onClick={closeMobile}>About</a></li>
+          <li><a href="#skills" onClick={closeMobile}>Skills</a></li>
+          <li><a href="#services" onClick={closeMobile}>Services</a></li>
+          <li><a href="#projects" onClick={closeMobile}>Portfolio</a></li>
+          <li><a href="#contact" onClick={closeMobile}>Contact</a></li>
         </ul>
-        <div className="mobile-menu">
+        <div className={`mobile-menu ${mobileOpen ? 'active' : ''}`} onClick={toggleMobile}>
           <span></span>
           <span></span>
           <span></span>
